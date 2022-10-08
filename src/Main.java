@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        File file = new File("basket.txt");
+        File file = new File("basket.bin");
         if (file.createNewFile()) {
             System.out.println("Файл создан");
         }
@@ -28,17 +28,17 @@ public class Main {
                 int numProduct = Integer.parseInt(addCart[0]) - 1;
                 int countProduct = Integer.parseInt(addCart[1]);
                 basketF.addToCart(numProduct, countProduct);
-                basketF.saveTxt(file);
+                basketF.printCart();
+                basketF.saveBin(file);
+
             } catch (NumberFormatException e) {
                 System.out.println();
             }
             if ("load".equals(input)) {
-                basketF.loadFromTxtFile(new File("basket.txt"));
-                basketF.printCart();
+                basketF.loadFromBinFile(file);
                 System.out.println("Корзина загружена ");
             }
         }
-        basketF.printCart();
+
     }
 }
-
