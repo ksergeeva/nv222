@@ -7,7 +7,7 @@ import java.util.Scanner;
 class Basket implements Serializable {
     private String[] products;
     private int[] prices;
-    private static int[] cart;
+    private  int[] cart;
     protected int sumProduct;
 
     Basket(int[] prices, String[] products) {
